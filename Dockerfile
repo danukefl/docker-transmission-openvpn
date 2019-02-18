@@ -6,6 +6,11 @@ VOLUME /config
 VOLUME /downloads
 VOLUME /watch
 
+ADD openvpn/ /etc/openvpn/
+ADD transmission/ /etc/transmission/
+ADD tinyproxy /opt/tinyproxy/
+ADD unrar.sh /config/unrar.sh
+
 # Update packages and install software
 RUN apt-get update \
     && apt-get -y upgrade \
@@ -37,13 +42,7 @@ RUN apt-get update \
     && groupmod -g 1000 users \
     && useradd -u 911 -U -d /config -s /bin/false abc \
     && usermod -G users abc
-
-ADD openvpn/ /etc/openvpn/
-ADD transmission/ /etc/transmission/
-ADD tinyproxy /opt/tinyproxy/
-ADD unrar.sh /config/unrar.sh
-
-chmod a+e /config/unrar.sh
+    && chmod a+e /config/unrar.sh
 
 ENV OPENVPN_USERNAME=**None** \
     OPENVPN_PASSWORD=**None** \
