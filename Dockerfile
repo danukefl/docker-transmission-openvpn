@@ -1,7 +1,6 @@
 FROM ubuntu:16.04
 MAINTAINER Nick Rhyne (danuke/danukefl)
 
-VOLUME /data
 VOLUME /config
 VOLUME /downloads
 VOLUME /watch
